@@ -1,0 +1,130 @@
+import os
+
+class I18n:
+    def __init__(self, lang="tr"):
+        self.lang = lang
+        self.texts = {
+            "tr": {
+                "search": "Ara / Çözümle",
+                "batch_download": "Toplu İndir",
+                "sources": "Kaynaklar:",
+                "duration_all": "Süre: Tümü",
+                "duration_30": "> 30 Dk",
+                "duration_60": "> 60 Dk",
+                "duration_90": "> 90 Dk",
+                "duration_120": "> 120 Dk",
+                "ready": "Hazır.",
+                "search_placeholder": "İsim veya link yazınız...",
+                "download_queue": "İndirme Kuyruğu",
+                "clear_list": "Listeyi Temizle",
+                "start_queue": "Tüm Kuyruğu Başlat",
+                "history": "Kütüphane",
+                "clear_history": "Tümünü Kaldır",
+                "refresh": "Yenile",
+                "settings": "Ayarlar",
+                "save_settings": "Ayarları Kaydet",
+                "update_ytdlp": "yt-dlp Güncelle",
+                "max_concurrent": "Eşzamanlı İndirme Limiti:",
+                "speed_limit": "Hız Limiti (KB/s, 0=Sınırsız):",
+                "auto_shutdown": "Tüm indirmeler bittiğinde bilgisayarı kapat",
+                "naming_tmpl": "İsimlendirme Şablonu:",
+                "subfolder": "Platforma göre alt klasör oluştur",
+                "create_nfo": "İndirilen medya için NFO (XML) oluştur",
+                "download_thumb": "Küçük resmi (Thumbnail) indir",
+                "download_subs": "Varsa altyazıları indir (TR ve EN)",
+                "mp3_quality": "MP3 Kalitesi (kbps):",
+                "proxy": "Vekil (Proxy):",
+                "download_dir": "İndirme Dizini:",
+                "browse": "Gözat",
+                "about": "Hakkında",
+                "developer": "Geliştirici:",
+                "version": "Versiyon: 1.0",
+                "menu_search": "Keşfet",
+                "menu_downloads": "İndirmeler",
+                "menu_history": "Kütüphane",
+                "menu_settings": "Ayarlar",
+                "menu_about": "Hakkında",
+                "cancel": "İptal Et",
+                "open_file": "Dosyayı Aç",
+                "speed": "Hız:",
+                "remaining": "Kalan:",
+                "size": "Boyut:",
+                "download": "İndir",
+                "preview": "Önizle",
+                "error": "Hata",
+                "searching": "Aranıyor...",
+                "search_done": "Arama bitti.",
+                "settings_saved": "Ayarlar kaydedildi.",
+                "updating": "yt-dlp güncelleniyor...",
+                "update_success": "yt-dlp başarıyla güncellendi.",
+                "update_error": "Güncelleme hatası:"
+            },
+            "en": {
+                "search": "Search / Resolve",
+                "batch_download": "Batch DL",
+                "sources": "Sources:",
+                "duration_all": "Duration: All",
+                "duration_30": "> 30 Min",
+                "duration_60": "> 60 Min",
+                "duration_90": "> 90 Min",
+                "duration_120": "> 120 Min",
+                "ready": "Ready.",
+                "search_placeholder": "Type name or paste link...",
+                "download_queue": "Download Queue",
+                "clear_list": "Clear List",
+                "start_queue": "Start Queue",
+                "history": "Library",
+                "clear_history": "Clear Library",
+                "refresh": "Refresh",
+                "settings": "Settings",
+                "save_settings": "Save Settings",
+                "update_ytdlp": "Update yt-dlp",
+                "max_concurrent": "Max Concurrent Downloads:",
+                "speed_limit": "Speed Limit (KB/s, 0=Unlimit):",
+                "auto_shutdown": "Shutdown PC when all downloads finish",
+                "naming_tmpl": "Naming Template:",
+                "subfolder": "Create subfolder by platform",
+                "create_nfo": "Create NFO (XML) for media",
+                "download_thumb": "Download Thumbnail",
+                "download_subs": "Download subtitles if exist (TR & EN)",
+                "mp3_quality": "MP3 Quality (kbps):",
+                "proxy": "Proxy:",
+                "download_dir": "Download Directory:",
+                "browse": "Browse",
+                "about": "About",
+                "developer": "Developer:",
+                "version": "Version: 1.0",
+                "menu_search": "Discover",
+                "menu_downloads": "Downloads",
+                "menu_history": "Library",
+                "menu_settings": "Settings",
+                "menu_about": "About",
+                "cancel": "Cancel",
+                "open_file": "Open File",
+                "speed": "Speed:",
+                "remaining": "ETA:",
+                "size": "Size:",
+                "download": "Download",
+                "preview": "Preview",
+                "error": "Error",
+                "searching": "Searching...",
+                "search_done": "Search completed.",
+                "settings_saved": "Settings saved.",
+                "updating": "Updating yt-dlp...",
+                "update_success": "yt-dlp updated successfully.",
+                "update_error": "Update error:"
+            }
+        }
+
+    def set_lang(self, lang):
+        if lang in self.texts:
+            self.lang = lang
+
+    def t(self, key):
+        return self.texts.get(self.lang, self.texts["tr"]).get(key, key)
+
+i18n = I18n()
+def t(key):
+    return i18n.t(key)
+def set_lang(lang):
+    i18n.set_lang(lang)
