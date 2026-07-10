@@ -1,0 +1,15 @@
+# Python çöpleri
+__pycache__/
+*.pyc
+
+# nZula yerel veritabanı ve logları
+*.db
+*.log
+
+# Kullanıcıya özel ayarlar
+config.json
+
+# PyInstaller derleme klasörleri
+build/
+dist/
+*.spec
